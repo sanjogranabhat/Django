@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+
+{%block content%}
+    <div class="container mt-5">
+        <h2>Add and Update Student</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="roll">Roll:</label>
+                <input type="text" class="form-control" id="roll" name="roll" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        
+            <!-- {{form.as_p}} -->
+        </form>
+    </div>
+{%endblock%}

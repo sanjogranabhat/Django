@@ -1,12 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>HEllo my name is {{information.name}}</h1>
-    <p>I am {{information.age}}years old. I live in {{information.location}}. My contact number is {{contact.phone}} and you can also contact me with the {{contact.email}}</p>
-</body>
-</html>
+{% extends 'base.html'%}
+
+
+{%block content%}
+<div class="container mt-5">
+    <h1>List of Students</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Roll</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.roll }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.city }}</td>
+
+
+
+                <td><a href="{% url 'update' student.id %}">Update</a></td>
+                <td><a href="{% url 'delete' student.id %}">Delete</a></td>
+
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="container mt-5">
+    <h1>Results</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Percentage</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in result %}
+            <tr>
+                <td>{{ result.student.name }}</td>
+                <td>{{ result.percentage }}</td>
+                <td>{{ result.garde }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="container mt-5">
+    <h1>Parents</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for parent in parents %}
+            <tr>
+                <td>{{ parent.name }}</td>
+                <td>{{ parent.address }}</td>
+                <td>{{ parent.age }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{%endblock%}
